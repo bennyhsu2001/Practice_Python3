@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<employees>
+  <employee id="a112233">
+     <name>Mary</name>
+     <age>30</age>
+  </employee>
+  <employee id="b231334">
+     <name>Jack</name>
+     <age>35</age>
+  </employee>
+  <contractor>
+     <name>Tom</name>
+     <age>28</age>
+ </contractor>
+ <partime>
+     <name>Fiona</name>
+     <age>18</age>
+     <hours>6</hours>
+ </partime>
+ <partime>
+     <name>Steve</name>
+     <age>18</age>
+     <hours>4</hours>
+ </partime>
+</employees>

@@ -1,0 +1,58 @@
+﻿html = display + data
+<table>
+  <thead>
+    <tr>
+      <th>col1
+      <th>col2
+  <tbody>
+    <tr>
+     <td>1</td>
+     <td>1000</td>
+
+xml = data
+<item>
+   <id>1</id>
+   <price>1000</price>
+</item>
+
+json = data
+[{'id':1,'price':1000},{}]
+
+['ajpeace','aj','aj11']
+
+csv
+tsv
+
+
+傳統的
+ajax
+real time
+
+
+site   -> html  -> browser     (MVC)
+
+service -> data(xml、json、csv、yaml...)  (Restful api)
+
+
+
+
+程式 > function > class > *.py
+
+.py > module
+
+modules > package
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
