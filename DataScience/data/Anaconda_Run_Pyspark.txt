@@ -1,0 +1,78 @@
+Run pyspark on anaconda3
+
+1) (Optional) Need to use yarn mode
+   Set $HADOOP_CONF_DIR env. variable
+   
+   # For all users
+   nano /etc/profile.d/hadoopenv.sh
+   or 
+   # For specific user
+   nano ~/.bashrc
+   
+   # Set HADOOP_CONF_DIR
+   export HADOOP_CONF_DIR=/usr/local/hadoop/etc/hadoop
+
+   # Source file
+   chmod a+x /etc/profile.d/hadoopenv.sh
+   source /etc/profile.d/hadoopenv.sh
+   or
+   source ~/.bashrc
+   
+2) Install Anaconda to /opt/anaconda3 
+   (For all nodes in Hadoop cluster or Spark standalone cluster)
+   sudo -i
+   bash Anaconda3-5.0.1-Linux-x86_64.sh
+   
+3) Install pyspark in anaconda3
+   (For all nodes in Hadoop cluster or Spark standalone cluster)
+   /opt/anaconda3/bin/pip install pyspark
+   
+4) Start jupyter notebook
+   # exit root account
+   
+   /opt/anaconda3/bin/jupyter notebook
+   
+5) Create Saprk session
+   from pyspark.sql import SparkSession
+
+   # local mode
+   spark = SparkSession\
+        .builder\
+        .appName("mldemo")\
+        .getOrCreate()
+    
+   # yarn mode
+   spark = SparkSession\
+        .builder\
+		.master("yarn")
+        .appName("mldemo")\
+        .getOrCreate()
+
+   # standalone mode
+   spark = SparkSession\
+        .builder\
+		.master("spark://master.example.org:7077")
+        .appName("mldemo")\
+        .getOrCreate()
+	
+6) Check SparkSession is OK
+   spark.sparkContext.appName
+
+7) Read csv file
+   
+   # From hdfs
+   df=spark.read.csv("/user/user01/bank-full.csv",sep = ';',header = True,inferSchema = True)
+   
+   # From local file
+   df=spark.read.csv("file:///vagrant/bank-full.csv",sep = ';',header = True,inferSchema = True)
+   
+   df.show()
+   df.head()
+
+   df.createOrReplaceTempView('bank')
+   spark.sql('select count(*) as counts from bank').show()
+   
+8) Stop SparkSession
+   spark.stop()
+
+   
